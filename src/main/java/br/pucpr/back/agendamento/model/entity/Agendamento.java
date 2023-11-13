@@ -24,12 +24,10 @@ public class Agendamento {
     @Column(name = "TPSTATUSAGENDAMENTO")
     private short statusAgendamento;
 
-    @ManyToOne
-    @JoinColumn(name = "MEDICOID")
-    private Usuario medico;
+    @Column(name = "MEDICOID")
+    private Integer medico;
 
-    @ManyToOne
-    @JoinColumn(name = "PACIENTEID")
-    private Usuario paciente;
+    @Column(name = "PACIENTEID")
+    private Integer paciente;
 
 }

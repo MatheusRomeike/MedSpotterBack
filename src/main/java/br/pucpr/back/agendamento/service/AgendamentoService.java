@@ -22,13 +22,6 @@ public class AgendamentoService {
     @Autowired
     private AgendamentoRepository agendamentoRepository;
 
-    public Agendamento salvar(Agendamento agendamento) {
-        if (agendamentoRepository.existsByDataAgendamento(agendamento.getDataAgendamento())) {
-                throw new RuntimeException("CPF já cadastrado");
-        }
-
-        return agendamentoRepository.save(usuario);
-    }
 
     public List<AgendamentoDto> getAllAgendamentos() {
         return agendamentoRepository.findAll().stream()
@@ -64,11 +57,11 @@ public class AgendamentoService {
     }
 
     private AgendamentoDto convertToDto(Agendamento agendamento) {
-        AgendamentoDto AgendamentoDto = new AgendamentoDto();
-        BeanUtils.copyProperties(agendamento, AgendamentoDto);
-        AgendamentoDto.setMedicoId(agendamento.getMedico().getId());
-        AgendamentoDto.setPacienteId(agendamento.getPaciente().getId());
-        return AgendamentoDto;
+        AgendamentoDto agendamentoDto = new AgendamentoDto();
+        BeanUtils.copyProperties(agendamento, agendamentoDto);
+        agendamentoDto.medicoId = agendamento.getMedico();
+        agendamentoDto.pacienteId= agendamento.getPaciente();
+        return agendamentoDto;
     }
 
     private Agendamento convertToEntity(AgendamentoDto AgendamentoDto) {

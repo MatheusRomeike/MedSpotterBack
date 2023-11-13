@@ -99,10 +99,10 @@ public class AgendamentoController {
         }
     }
 
-    @GetMapping("/obter-dados")
-    public ResponseEntity<AgendamentoDto> obterDados(@RequestParam("usuarioId") int usuarioId) {
+    @GetMapping("/obterPorId")
+    public ResponseEntity<AgendamentoDto> obterPorId(@RequestParam("agendamentoId") int agendamentoId) {
         try {
-            AgendamentoDto AgendamentoDto = agendamentoService.findById(usuarioId);
+            AgendamentoDto AgendamentoDto = agendamentoService.getAgendamentoById(agendamentoId);
             return new ResponseEntity<>(AgendamentoDto, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
