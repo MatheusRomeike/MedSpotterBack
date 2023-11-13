@@ -14,7 +14,4 @@ public interface AgendamentoRepository extends JpaRepository<Agendamento, Intege
 
         boolean existsByDataAgendamento(LocalDateTime startDateTime);
 
-        Optional<Usuario> findByEmailAndSenha(String email, String senha);
-
-        List<Agendamento> getAgendamentosByData(LocalDateTime startDateTime, LocalDateTime endDateTime);
 }

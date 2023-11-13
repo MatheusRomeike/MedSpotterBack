@@ -87,18 +87,6 @@ public class AgendamentoController {
         }
     }
 
-    @GetMapping("/por-data")
-    public ResponseEntity<List<AgendamentoDto>> getAgendamentosPorData(
-            @RequestParam("startDateTime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDateTime,
-            @RequestParam("endDateTime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDateTime) {
-        try {
-            List<AgendamentoDto> agendamentos = agendamentoService.getAgendamentosByData(startDateTime, endDateTime);
-            return new ResponseEntity<>(agendamentos, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
     @GetMapping("/obterPorId")
     public ResponseEntity<AgendamentoDto> obterPorId(@RequestParam("agendamentoId") int agendamentoId) {
         try {

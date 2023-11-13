@@ -72,11 +72,4 @@ public class AgendamentoService {
         // Exemplo: agendamento.setPaciente(usuarioRepository.findById(AgendamentoDto.getPacienteId()).orElse(null));
         return agendamento;
     }
-
-    public List<AgendamentoDto> getAgendamentosByData(LocalDateTime startDateTime, LocalDateTime endDateTime) {
-        List<Agendamento> agendamentos = agendamentoRepository.getAgendamentosByData(startDateTime, endDateTime);
-        return agendamentos.stream()
-                .map(this::convertToDto)
-                .collect(Collectors.toList());
-    }
 }
