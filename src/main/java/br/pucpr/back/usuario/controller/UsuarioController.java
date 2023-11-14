@@ -21,6 +21,20 @@ public class UsuarioController {
 
     private ModelMapper modelMapper = new ModelMapper();;
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<Usuario>> getUsuarioById(@PathVariable Integer id) {
+        try {
+            Optional<Usuario> usuario = usuarioService.findById(id);
+            if (usuario != null) {
+                return new ResponseEntity<>(usuario, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @PostMapping("/salvar")
     public ResponseEntity<TokenDto> salvar(@Valid @RequestBody Usuario usuario) {
         try {

@@ -51,4 +51,9 @@ public class UsuarioService {
         usuarioRepository.save(usuario.get());
     }
 
+    public Usuario getUsuarioById(Integer id) {
+        Optional<Usuario> usuarioOptional = usuarioRepository.findById(id);
+        return usuarioOptional.orElse(null);
+    }
+
 }
